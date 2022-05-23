@@ -60,5 +60,5 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - Actions can be configured to run on a schedule. Configure it by using: ``` ***** ```. Each star stands for a different component of time. Minute/Hour/Day of the month/month/Day of the week.
 - You can manually trigger a workflow by using the **workflow_dispatch** command.
 - You can trigger a webhook event called **repository_dispatch**. You will trigger the workflow by making a POST request to the GitHub endpoint: **/repos/{owner}/{repo}/dispatches** with the event names in the request body.
-- You can use conditional keywords by using the **if** statement. You will need to use **${{ <expression> }}** to tell GitHub to evaluate the statement as an expression rather than a string.
+- You can use conditional keywords by using the **if** statement. You will need to use ```${{ <expression> }}``` to tell GitHub to evaluate the statement as an expression rather than a string.
 - If you want to disable a workflow so that you don't have to delete the workflow file then you can do that.

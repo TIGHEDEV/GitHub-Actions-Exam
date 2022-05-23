@@ -1,3 +1,4 @@
+<!--
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/TIGHEDEV/GitHub-Actions-Exam/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
@@ -35,3 +36,29 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+-->
+
+# GitHub Actions Revision Guide
+
+## GitHub Actions Introduction
+
+- GitHub Actions are packaged scripts in the form of a yml file that automate tasks in a workflow.
+- GitHub Actions can be found in the marketplace or you can write one yourself.
+- There are 2 types of Actions:
+  - **Container Actions** - The environment is part of the action's code. They can only run in a Linux environment hosted by GitHub. They support many different languages
+  - **JavaScript Actions** - The environment is not part of the action's code, it has to be specified. Can run in a VM and supports Linux, MacOS and Windows environments.
+
+### GitHub Actions Components
+
+- **Workflows** - Each workflow must contain at least 1 job. Add the workflow to the github/workflows directory. Can be triggered by many different events.
+- **Jobs** - Part of the workflow that will be associated to a runner.
+- **Steps** - An individual task that can run commands in a job.
+- **Actions** - Standalone commands that are executed. Can reference other Actions or use commands like ```run: npm install -g bats```
+
+### Events to run an Action
+
+- Actions can be configured to run on a schedule. Configure it by using: ``` ***** ```. Each star stands for a different component of time. Minute/Hour/Day of the month/month/Day of the week.
+- You can manually trigger a workflow by using the **workflow_dispatch** command.
+- You can trigger a webhook event called **repository_dispatch**. You will trigger the workflow by making a POST request to the GitHub endpoint: **/repos/{owner}/{repo}/dispatches** with the event names in the request body.
+- You can use conditional keywords by using the **if** statement. You will need to use **${{ <expression> }}** to tell GitHub to evaluate the statement as an expression rather than a string.
+- If you want to disable a workflow so that you don't have to delete the workflow file then you can do that.

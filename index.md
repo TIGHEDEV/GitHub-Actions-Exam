@@ -81,3 +81,44 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 
 - If you want to trigger a workflow but onyl after someone has reviewed the pull request then you can do this with a trigger on **pull-request-review** or by adding a label to the pull request by using the **pullreminders/label-when-approved-action** action.
 - When using the label action you can set the number of approvals needed and specify the GitHub token so that a change can be made by the action. This is done in the **env** section.
+
+## Customise your workflow with environment variables and artifact data
+
+### Default environment variables
+
+- There are default enviornment variables available but they can only be used within the runner that is executing the job.
+- Default variables are **case sensitive**
+- To use them you need to sepecify the **$** sign followed by the environment variable name.
+- Default variables are all **uppercase**
+
+### Contexts
+
+- Similar to environment variables but span the entire workflow.
+- Can be used in an if statement prior to a runner being executed.
+- Context variables are all **lowercase**.
+
+### Custom environment variables
+
+- To use them they need to be defined in your workflow file using the **env** context
+- Can use the runner's OS usual way of reading variables to read them.
+
+### Scripts
+
+- The **run** keyword is used to run scripts and commands on the runner.
+- You can store scripts in your repo, usually something like **.github/scripts/**
+- Make sure to provide the path to the script and the shell it needs to run
+
+### Cache dependancies
+
+- To save time when reusing dependencies/outputs you can cache them so that your workflow is more efficient.
+- You can cache using GitHub's cache action. The action works by retrieving a cache that you have identified by a unique key.
+- The action returns the cached data to you via the path that you provide
+
+### Getting detailed logs
+
+- If the default logs don't provide enough detail then you can enable additional debug logging for runs and steps. 
+- To enable runner diagnostic logging you need to set the **ACTIONS_RUNNER_DEBUG** secret in the workflow repository to **true**
+- To enable step diagnostic logging you need to set the **ACTIONS_STEP_DEBUG** secret in the workflow repository to **true**
+- You can access the logs from the UI and REST API: ```GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs```
+
+

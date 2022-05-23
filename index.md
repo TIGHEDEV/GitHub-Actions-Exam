@@ -121,4 +121,19 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - To enable step diagnostic logging you need to set the **ACTIONS_STEP_DEBUG** secret in the workflow repository to **true**
 - You can access the logs from the UI and REST API: ```GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs```
 
+## Using GitHub Actions to implement CD
 
+### Triggering a CD workflow
+
+- You can trigger a workflow on a pull request that has specific labels by using the command **types: [labeled]**
+- You can also trigger a workflow using the **if** condition, e.g. ```if: contains(github.event.pull_request.labels.*.name, 'stage')```
+
+### Using secrets
+
+- To deply to Azure the GitHub ACtion must have permission to access the resource, therefore you can store your Azure credentials in a GitHub secrets so that you are not storing it in plain text.
+- Example: ```steps:
+      - name: "Login via Azure CLI"
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}```
+- Secrets can be added through the UI.

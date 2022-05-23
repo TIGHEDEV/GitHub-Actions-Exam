@@ -77,3 +77,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - Uploading an artifact can be done using the **actions/upload-artifact** command, and downloaded from storage using the **actions/download-artifact** comnand.
 - Storing an artifact allows you to preserve it between jobs. Each job uses a fresh VM so you need the artifact in storage to be able to call it in multiple jobs.
 
+### Automating reviews
+
+- If you want to trigger a workflow but onyl after someone has reviewed the pull request then you can do this with a trigger on **pull-request-review** or by adding a label to the pull request by using the **pullreminders/label-when-approved-action** action.
+- When using the label action you can set the number of approvals needed and specify the GitHub token so that a change can be made by the action. This is done in the **env** section.

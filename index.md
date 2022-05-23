@@ -62,3 +62,18 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - You can trigger a webhook event called **repository_dispatch**. You will trigger the workflow by making a POST request to the GitHub endpoint: **/repos/{owner}/{repo}/dispatches** with the event names in the request body.
 - You can use conditional keywords by using the **if** statement. You will need to use ```${{ <expression> }}``` to tell GitHub to evaluate the statement as an expression rather than a string.
 - If you want to disable a workflow so that you don't have to delete the workflow file then you can do that.
+
+## Using GitHub Actions to implement CI
+
+### Using a matrix
+
+- If you want to test your action on multiple versions of Node then you will need to use a matrix. 
+- It is good to separate out the tests and builds to make the logs more clear.
+- Use the matrix command to create the matrix and then call it like a variable in the with command. 
+
+### Artifacts
+
+- Anything that is produced by a workflow, other than logs, is called an artifact. E.g creating a docker container.
+- Uploading an artifact can be done using the **actions/upload-artifact** command, and downloaded from storage using the **actions/download-artifact** comnand.
+- Storing an artifact allows you to preserve it between jobs. Each job uses a fresh VM so you need the artifact in storage to be able to call it in multiple jobs.
+

@@ -138,6 +138,31 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
           creds: ${{ secrets.AZURE_CREDENTIALS }}```
 - Secrets can be added through the UI.
 
+### Removing artifacts
+
+- GitHub stores uploaded artifacts and build logs for 90 days by default.
+- You can customise the retention limit so as to free up space in your limits.
+- You can delete artifacts via the artifacts REST API or the UI.
+- Changing the default retention period will only affect new artifatcs.
+- To change the retention period in a workflow you can use ```retention-days: 10``` to set the retention to 10 days rather than the default.
+
+### Adding a status badge
+
+- To see the status of your workflow you can add a status badge to your README file. It means that you don't have to go to the actions tab to see the status
+- You can add a status badge to whatever branch you want: ```![example branch parameter.](https://github.com/mona/special-octo-eureka/actions/workflows/grading.yml/badge.svg?branch=my-workflow)```
+- You can also use the UI to create a status badge.
+- Steps to deploy a required reviewer rule:
+  - Create a production environment within the repository.
+  - Configure the required reviewers environment protection to require an approval from the specific dev team.
+  - Configure the specific job within the workflow to look for the production environment.
+
+### Environment protections
+
+- You can set up rules to pass before any secrets in the environment can be accessed.
+- There are 2 types of rules you can set for public repos:
+  - **Required Reviewers** - set a specific person or team to approve the workflow
+  - **wait timer** - used to delay a job for a specific time after it has been triggered
+
 ## Using GitHub Actions to publish to GitHub Packages
 
 ### What are packages?

@@ -148,7 +148,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - You8 can also publish container images.
 - Package permissions are assigned at the repository level.
 
-## Publish to GitHub Packages
+### Publish to GitHub Packages
 
 - You need to specify a **registry-url** and an **access token** for authentication when publishing. Plus your GitHub username
 - A command like **mpn ci** gets the packages that you want.
@@ -157,9 +157,20 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 - It follows this pattern: ```https://PACKAGE_TYPE.pkg.github.com/OWNER/REPOSITORY```
 - When  you update a package you can delete the old version withb the **delete-package-versions** command.
 
-## Using GitHub Container Registry
+### Using GitHub Container Registry
 
 - You can store container images within your organisation and user account, rather than just a repository.
 - You can set permissions for the container images
 - You can access public images anonymously.
 - A command like this will allow you to push your container image to GHCR: ```docker push ghcr.io/OWNER/IMAGE_NAME:latest```
+
+## GitHub Actions with GitHub Script
+
+### Overview of GitHub Script
+
+- An action that provides an authenticated octokit client and allows JavaScript to be written directly in a workflow file. Runs in Node.js.
+- Octokit is the official collection of clients for the GitHub API via octokit/rest.js.
+- Octokit hanbdles all the overhead of the API so that you don't have to. E.g authentication, configuration adn dependencies.
+- It can do basically everything in GitHub.
+- The difference when using GitHub script over octokit is this: ```octokit.issues.createComment({``` compared to: ```github.issues.createComment({```.
+- When using a script you can reference the script from a specific loication.

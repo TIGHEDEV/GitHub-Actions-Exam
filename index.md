@@ -137,3 +137,29 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}```
 - Secrets can be added through the UI.
+
+## Using GitHub Actions to publish to GitHub Packages
+
+### What are packages?
+
+- Packet management service.
+- Allows you to share your project dependencies with your organisation or publicly.
+- Compatible with NPM, NuGet, RubyGems, Maven and Gradle.
+- You8 can also publish container images.
+- Package permissions are assigned at the repository level.
+
+## Publish to GitHub Packages
+
+- You need to specify a **registry-url** and an **access token** for authentication when publishing. Plus your GitHub username
+- A command like **mpn ci** gets the packages that you want.
+- You can generate a PAT in your profiele settings
+- When logging in to packages you need to authenticate with the endpoint. Depending on what packet manager you are using the endpoint will be different. For NPM it will look like this: ```bash npm login --registry=https://npm.pkg.github.com```. NuGet will look like this: ```dotnet nuget add source https://nuget.pkg.github.com/OWNER/index.json -n github -u OWNER -p [Your PAT Token]```
+- It follows this pattern: ```https://PACKAGE_TYPE.pkg.github.com/OWNER/REPOSITORY```
+- When  you update a package you can delete the old version withb the **delete-package-versions** command.
+
+## Using GitHub Container Registry
+
+- You can store container images within your organisation and user account, rather than just a repository.
+- You can set permissions for the container images
+- You can access public images anonymously.
+- A command like this will allow you to push your container image to GHCR: ```docker push ghcr.io/OWNER/IMAGE_NAME:latest```

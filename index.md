@@ -66,6 +66,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 ## Using GitHub Actions to implement CI
 
 ### Using a matrix
+### Another header
 
 - If you want to test your action on multiple versions of Node then you will need to use a matrix. 
 - It is good to separate out the tests and builds to make the logs more clear.

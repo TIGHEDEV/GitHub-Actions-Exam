@@ -35,6 +35,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - uses: actions/azure/login@v1
+      - uses: azure/login@v1
         with:
           creds: ${{Secrets.AZURE_CREDENTIALS}}
